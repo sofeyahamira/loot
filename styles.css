@@ -18,7 +18,7 @@ body {
 }
 
 button {
-    font family: inherit;
+    font-family: inherit;
     font-size: inherit;
     padding: 0.5rem;
     margin: 1rem;
