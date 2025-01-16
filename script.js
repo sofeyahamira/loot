@@ -70,13 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // mysticReward() Function
     function mysticReward() {
-        let diamond = 0
         let collectible = "no"
-        let coins = Math.floor(Math.random() * 11) + 10;
-        let health = Math.floor(Math.random() * 10) + 1;
-        if (Math.floor(Math.random() * 10) + 1 == 10) {
-            diamond = 1;
-        } 
         if (Math.floor(Math.random() * 10) + 1 == 10) {
             collectible = generateCollectible();
             console.log(collectible)
@@ -86,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Check if it exists
         if(rewardElement) {
-            rewardElement.textContent = `You got ${coins} coin(s), ${diamond} diamond(s), ${collectible} collectible(s) and restored ${health}HP`;
+            rewardElement.textContent = `You got a ${collectible}`;
         } else {
             rewardElement = document.createElement("h3");
             rewardElement.id = "rewardMessage";
-            rewardElement.textContent = `You got ${coins} coin(s), ${diamond} diamond(s) and ${collectible} collectible(s) and restored ${health}HP`;
+            rewardElement.textContent = `You got a ${collectible}`;
             document.body.appendChild(rewardElement);
         }
 
