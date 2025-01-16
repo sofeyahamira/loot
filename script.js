@@ -1,8 +1,8 @@
 // Variables
 document.addEventListener("DOMContentLoaded", function() {
 
-    // Array of collectibles
-    const collectibles = [
+    // Array of collectables
+    const collectables = [
         "Golden Sword", "Silver Dagger", "Ancient Shield", "Mystic Helm", 
         "Phoenix Feather", "Dragon Scale", "Crystal Amulet", "Emerald Ring", 
         "Healing Potion", "Mana Potion", "Fire Orb", "Water Orb", 
@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", function() {
         "Ornate Flask", "Illuminated Manuscript", "Ancient Harp"
     ];
 
-    // Function to generate a random collectible
-    function generateCollectible() {
-        const randomIndex = Math.floor(Math.random() * collectibles.length);
-        const collectible = collectibles[randomIndex];
-        return collectible
+    // Function to generate a random collectable
+    function generateCollectable() {
+        const randomIndex = Math.floor(Math.random() * collectables.length);
+        const collectable = collectables[randomIndex];
+        return collectable
     }
 
     // Variables
@@ -49,71 +49,78 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // miniReward() Function
     function miniReward() {
-        let diamond = 0;
-        let coins = Math.floor(Math.random() * 6) + 5;
+
+        // Add variable
+        let collectable = "null"
+
+        // Probability Logic
         if (Math.floor(Math.random() * 20) + 1 == 20) {
-            diamond = 1;
-        } 
-
-        let rewardElement = document.getElementById("rewardMessage");
-
-        // Check if it exists
-        if(rewardElement) {
-            rewardElement.textContent = `You got ${coins} coin(s) and ${diamond} diamond(s)`;
+            collectable = generateCollectable();
+            console.log(collectable)
+            rewardMessageGotLoot(collectable)
         } else {
-            rewardElement = document.createElement("h3");
-            rewardElement.id = "rewardMessage";
-            rewardElement.textContent = `You got ${coins} coin(s) and ${diamond} diamond(s)`;
-            document.body.appendChild(rewardElement);
+            rewardMessageNoLoot()
         }
     }
 
     // mysticReward() Function
     function mysticReward() {
-        let collectible = "no"
+
+        // Add variable
+        let collectable = "null"
+
+        // Probability Logic
         if (Math.floor(Math.random() * 10) + 1 == 10) {
-            collectible = generateCollectible();
-            console.log(collectible)
-        } 
-
-        let rewardElement = document.getElementById("rewardMessage");
-
-        // Check if it exists
-        if(rewardElement) {
-            rewardElement.textContent = `You got a ${collectible}`;
+            collectable = generateCollectable();
+            console.log(collectable)
+            rewardMessageGotLoot(collectable)
         } else {
-            rewardElement = document.createElement("h3");
-            rewardElement.id = "rewardMessage";
-            rewardElement.textContent = `You got a ${collectible}`;
-            document.body.appendChild(rewardElement);
+            rewardMessageNoLoot()
         }
-
     }
 
     function titanReward() {
-        let diamond = 0
-        let collectible = "no"
-        let coins = Math.floor(Math.random() * 31) + 20;
-        if (Math.floor(Math.random() * 5) + 1 == 5) {
-            diamond = 1;
-        } 
-        if (Math.floor(Math.random() * 5) + 1 == 5) {
-            collectible = generateCollectible();
-            console.log(collectible)
-        } 
 
+        // Add variable
+        let collectable = "null"
+
+        // Probability Logic
+        if (Math.floor(Math.random() * 5) + 1 == 5) {
+            collectable = generateCollectable();
+            console.log(collectable)
+            rewardMessageGotLoot(collectable)
+        } else {
+            rewardMessageNoLoot()
+        }
+    }
+
+    // Reward message if you got a collectable
+    function rewardMessageGotLoot(collectable) {
         let rewardElement = document.getElementById("rewardMessage");
 
         // Check if it exists
         if(rewardElement) {
-            rewardElement.textContent = `You got ${coins} coin(s), ${diamond} diamond(s), ${collectible} collectible(s) and restored all HP`;
+            rewardElement.textContent = `You got a ${collectable}!`;
         } else {
             rewardElement = document.createElement("h3");
             rewardElement.id = "rewardMessage";
-            rewardElement.textContent = `You got ${coins} coin(s), ${diamond} diamond(s), ${collectible} collectible(s) and restored all HP`;
+            rewardElement.textContent = `You got a ${collectable}!`;
             document.body.appendChild(rewardElement);
         }
-
     }
 
+    // Reward message if you got didn't get a collectable
+    function rewardMessageNoLoot() {
+        let rewardElement = document.getElementById("rewardMessage");
+
+        // Check if it exists
+        if(rewardElement) {
+            rewardElement.textContent = `You didn't get a collectable`;
+        } else {
+            rewardElement = document.createElement("h3");
+            rewardElement.id = "rewardMessage";
+            rewardElement.textContent = `You didn't get a collectable`;
+            document.body.appendChild(rewardElement);
+        }
+    }
 })
