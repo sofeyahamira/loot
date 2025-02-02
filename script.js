@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let collectable = "null"
 
         // Probability Logic
-        if (Math.floor(Math.random() * 20) + 1 == 20) {
+        if (Math.floor(Math.random() * 10) + 1 == 10) {
             collectable = generateCollectable();
             console.log(collectable)
             rewardMessageGotLoot(collectable)
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let collectable = "null"
 
         // Probability Logic
-        if (Math.floor(Math.random() * 10) + 1 == 10) {
+        if (Math.floor(Math.random() * 5) + 1 == 5) {
             collectable = generateCollectable();
             console.log(collectable)
             rewardMessageGotLoot(collectable)
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let collectable = "null"
 
         // Probability Logic
-        if (Math.floor(Math.random() * 5) + 1 == 5) {
+        if (Math.random() < 0.3) {
             collectable = generateCollectable();
             console.log(collectable)
             rewardMessageGotLoot(collectable)
